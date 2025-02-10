@@ -19,16 +19,24 @@ class DepotType extends AbstractType
             'attr' => ['class' => 'form-control', 'placeholder' => 'Nom du dépôt'],
             'label' => 'Nom du dépôt',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true,
+            'empty_data' => ''
         ])
         ->add('localisation_depot', TextType::class, [
             'attr' => ['class' => 'form-control', 'placeholder' => 'Adresse'],
             'label' => 'Localisation',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true,
+            'empty_data' => ''
+
         ])
         ->add('capacite_depot', NumberType::class, [
             'attr' => ['class' => 'form-control', 'placeholder' => 'Capacité'],
             'label' => 'Capacité',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true,
+            'empty_data' => ''
+
         ])
         ->add('unite_cap_depot', ChoiceType::class, [
             'choices' => [
@@ -36,10 +44,13 @@ class DepotType extends AbstractType
                 'Litres (L)' => 'L',
                 'Mètres cubes (m³)' => 'm3',
                 'Palettes' => 'palettes',
-            ],
+             ],
             'attr' => ['class' => 'form-select'],
             'label' => 'Unité de capacité',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true,
+            'empty_data' => ''
+
         ])
         ->add('type_stockage_depot', ChoiceType::class, [
             'choices' => [
@@ -54,7 +65,10 @@ class DepotType extends AbstractType
             'attr' => ['class' => 'form-select'],
             'label' => 'Type de stockage',
             'label_attr' => ['class' => 'form-label'],
-        ])
+            "mapped"=>true,
+            'empty_data' => ''
+
+                    ])
         ->add('statut_depot', ChoiceType::class, [
             'choices' => [
                 'Actif' => 'actif',
@@ -65,6 +79,9 @@ class DepotType extends AbstractType
             'attr' => ['class' => 'form-select'],
             'label' => 'Statut',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true,
+            'empty_data' => ''
+
         ]);
         ;
     }

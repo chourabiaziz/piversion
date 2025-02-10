@@ -8,5 +8,6 @@
     <div class="container shadow-lg m-5 p-5">
          {{ include('depot/_form.html.twig', {'button_label': 'Update'}) }}
    <br>
-     </div>
+   {{ include('depot/_delete_form.html.twig') }} 
+    </div>
 {% endblock %}

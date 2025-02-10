@@ -28,8 +28,7 @@ class Depot
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "Champ ne peut pas être vide")]
-    #[Assert\GreaterThan(value: 0, message: "nombre doit etre positif")]
-
+    #[Assert\Positive( message: "nombre doit etre positif")]
     private ?float $capacite_depot = null;
 
     #[ORM\Column(length: 255)]
@@ -49,7 +48,7 @@ class Depot
     /**
      * @var Collection<int, Ressource>
      */
-    #[ORM\OneToMany(targetEntity: Ressource::class, mappedBy: 'depot')]
+    #[ORM\OneToMany(targetEntity: Ressource::class, mappedBy: 'depot' , cascade:["remove"])]
     private Collection $ressource;
 
     public function __construct()

@@ -21,16 +21,22 @@ class RessourceType extends AbstractType
             'attr' => ['class' => 'form-control', 'placeholder' => 'Entrez le nom de la ressource'],
             'label' => 'Nom de la ressource',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true ,            'empty_data' => ''
+
         ])
         ->add('type_ressource', TextType::class, [
             'attr' => ['class' => 'form-control', 'placeholder' => 'Entrez le type de la ressource'],
             'label' => 'Type de ressource',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true ,            'empty_data' => ''
+
         ])
         ->add('quantite_ressource', NumberType::class, [
             'attr' => ['class' => 'form-control', 'placeholder' => 'Entrez la quantité'],
             'label' => 'Quantité',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true ,            'empty_data' => ''
+
         ])
         ->add('unite_mesure', ChoiceType::class, [
             'choices' => [
@@ -42,13 +48,17 @@ class RessourceType extends AbstractType
             'attr' => ['class' => 'form-select'],
             'label' => 'Unité de mesure',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true ,            'empty_data' => ''
+
         ])
         ->add('date_ajout_ressource', DateTimeType::class, [
             'widget' => 'single_text',
             'attr' => ['class' => 'form-control'],
             'label' => 'Date d\'ajout',
             'label_attr' => ['class' => 'form-label'],
-            'data' => new \DateTime()
+            'data' => new \DateTime() ,
+            "mapped"=>true ,            'empty_data' => ''
+
         ])
         ->add('date_expiration_ressource', DateTimeType::class, [
             'widget' => 'single_text',
@@ -56,6 +66,8 @@ class RessourceType extends AbstractType
             'label' => 'Date d\'expiration',
             'label_attr' => ['class' => 'form-label'],
             'data' => (new \DateTime())->modify('+1 day'), // 🟢 Définit la date actuelle +1 jour
+            "mapped"=>true ,            'empty_data' => ''
+
 
         ])
         ->add('statut_ressource', ChoiceType::class, [
@@ -72,6 +84,8 @@ class RessourceType extends AbstractType
             'attr' => ['class' => 'form-select'],
             'label' => 'Statut',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>true ,            'empty_data' => ''
+
         ])
         ->add('depot', EntityType::class, [
             'class' => Depot::class,
@@ -79,6 +93,7 @@ class RessourceType extends AbstractType
             'attr' => ['class' => 'form-select'],
             'label' => 'Dépôt',
             'label_attr' => ['class' => 'form-label'],
+            "mapped"=>false
         ]);
         ;
     }
