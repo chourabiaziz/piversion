@@ -11,10 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/depot')]
-final class DepotController extends AbstractController
+ final class DepotController extends AbstractController
 {
-    #[Route(name: 'app_depot_index', methods: ['GET'])]
+    #[Route('/depot',name: 'app_depot_index')]
     public function index(DepotRepository $depotRepository): Response
     {
         return $this->render('depot/index.html.twig', [
@@ -22,7 +21,7 @@ final class DepotController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_depot_new', methods: ['GET', 'POST'])]
+    #[Route('/depot/new', name: 'app_depot_new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $depot = new Depot();
@@ -33,7 +32,7 @@ final class DepotController extends AbstractController
             $entityManager->persist($depot);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_depot_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_jeux_show', ['id'=>$flashcard->getJeux()->getId()]);
         }
 
         return $this->render('depot/new.html.twig', [
@@ -42,7 +41,7 @@ final class DepotController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_depot_show', methods: ['GET'])]
+    #[Route('/depot/{id}', name: 'app_depot_show')]
     public function show(Depot $depot): Response
     {
         return $this->render('depot/show.html.twig', [
@@ -50,7 +49,7 @@ final class DepotController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_depot_edit', methods: ['GET', 'POST'])]
+    #[Route('/depot/{id}/edit', name: 'app_depot_edit')]
     public function edit(Request $request, Depot $depot, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(DepotType::class, $depot);
@@ -59,7 +58,7 @@ final class DepotController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_depot_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_depot_index');
         }
 
         return $this->render('depot/edit.html.twig', [
@@ -68,14 +67,12 @@ final class DepotController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_depot_delete', methods: ['POST'])]
-    public function delete(Request $request, Depot $depot, EntityManagerInterface $entityManager): Response
+    #[Route('/depot/delete/{id}', name: 'app_depot_delete')]
+    public function delete( Depot $depot, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$depot->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($depot);
+             $entityManager->remove($depot);
             $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_depot_index', [], Response::HTTP_SEE_OTHER);
+ 
+        return $this->redirectToRoute('app_depot_index');
     }
 }

@@ -11,10 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/ressource')]
-final class RessourceController extends AbstractController
+ final class RessourceController extends AbstractController
 {
-    #[Route(name: 'app_ressource_index', methods: ['GET'])]
+    #[Route ( '/ressource' , name: 'app_ressource_index')]
     public function index(RessourceRepository $ressourceRepository): Response
     {
         return $this->render('ressource/index.html.twig', [
@@ -22,7 +21,7 @@ final class RessourceController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_ressource_new', methods: ['GET', 'POST'])]
+    #[Route('/ressource/new', name: 'app_ressource_new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $ressource = new Ressource();
@@ -33,7 +32,7 @@ final class RessourceController extends AbstractController
             $entityManager->persist($ressource);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_ressource_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_ressource_index');
         }
 
         return $this->render('ressource/new.html.twig', [
@@ -42,7 +41,7 @@ final class RessourceController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_ressource_show', methods: ['GET'])]
+    #[Route('/ressource/{id}', name: 'app_ressource_show')]
     public function show(Ressource $ressource): Response
     {
         return $this->render('ressource/show.html.twig', [
@@ -50,7 +49,7 @@ final class RessourceController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_ressource_edit', methods: ['GET', 'POST'])]
+    #[Route('/ressource/{id}/edit', name: 'app_ressource_edit')]
     public function edit(Request $request, Ressource $ressource, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(RessourceType::class, $ressource);
@@ -59,7 +58,7 @@ final class RessourceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_ressource_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_ressource_index');
         }
 
         return $this->render('ressource/edit.html.twig', [
@@ -68,14 +67,12 @@ final class RessourceController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_ressource_delete', methods: ['POST'])]
-    public function delete(Request $request, Ressource $ressource, EntityManagerInterface $entityManager): Response
+    #[Route('/ressource/delete/{id}', name: 'app_ressource_delete')]
+    public function delete( Ressource $ressource, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$ressource->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($ressource);
             $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_ressource_index', [], Response::HTTP_SEE_OTHER);
+ 
+        return $this->redirectToRoute('app_ressource_index');
     }
 }

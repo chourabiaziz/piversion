@@ -9,5 +9,6 @@
 
  <br>
 
-    {{ include('ressource/_delete_form.html.twig') }}
+ 
+<a class="btn btn-danger" href="{{ path('app_ressource_delete', {'id': ressource.id}) }}">delete</a>
 {% endblock %}

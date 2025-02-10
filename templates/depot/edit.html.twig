@@ -8,6 +8,7 @@
     <div class="container shadow-lg m-5 p-5">
          {{ include('depot/_form.html.twig', {'button_label': 'Update'}) }}
    <br>
-   {{ include('depot/_delete_form.html.twig') }} 
-    </div>
+<a class="btn btn-danger" href="{{ path('app_depot_delete', {'id': depot.id}) }}">delete</a>
+
+</div>
 {% endblock %}

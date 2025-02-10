@@ -20,7 +20,8 @@
                      <a href="{{ path('app_ressource_edit', {'id': ressource.id}) }}" class="btn btn-warning">Modifier</a>
                 </div>
                 <div class="mt-3">
-                    {{ include('ressource/_delete_form.html.twig') }}
+ 
+<a class="btn btn-danger" href="{{ path('app_ressource_delete', {'id': ressource.id}) }}">delete</a>
                 </div>
             </div>
         </div>
