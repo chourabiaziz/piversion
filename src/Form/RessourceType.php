@@ -93,7 +93,7 @@ class RessourceType extends AbstractType
             'attr' => ['class' => 'form-select'],
             'label' => 'Dépôt',
             'label_attr' => ['class' => 'form-label'],
-            "mapped"=>false
+            "mapped"=>false , 'empty_data' => ''
         ]);
         ;
     }
