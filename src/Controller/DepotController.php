@@ -31,7 +31,7 @@ use Symfony\Component\Routing\Attribute\Route;
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($depot);
             $entityManager->flush();
-            return $this->redirectToRoute('app_jeux_show');
+            return $this->redirectToRoute('app_depot_index');
         }
 
         return $this->render('depot/new.html.twig', [
