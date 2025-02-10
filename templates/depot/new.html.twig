@@ -1,0 +1,11 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}New Depot{% endblock %}
+
+{% block body %}
+    <h1 class="text-center" >Ajouter un Depot</h1>
+
+<div class="container shadow-lg m-5 p-5">
+    {{ include('depot/_form.html.twig') }}
+</div>
+ {% endblock %}
