@@ -35,8 +35,7 @@ class DepotType extends AbstractType
             'label' => 'Capacité',
             'label_attr' => ['class' => 'form-label'],
             "mapped"=>true,
-            'empty_data' => ''
-
+            'empty_data' => 0
         ])
         ->add('unite_cap_depot', ChoiceType::class, [
             'choices' => [

@@ -54,8 +54,7 @@ class Ressource
     private ?string $statut_ressource = null;
 
     #[ORM\ManyToOne(inversedBy: 'ressource')]
-    #[Assert\NotBlank(message: "Champ ne peut pas être vide")]
-
+ 
     private ?Depot $depot = null;
 
     public function getId(): ?int

@@ -34,7 +34,7 @@ use Symfony\Component\Routing\Attribute\Route;
             return $this->redirectToRoute('app_depot_index');
         }
 
-        return $this->render('depot/new.html.twig', [
+        return $this->render('depot/ajout.html.twig', [
             'depot' => $depot,
             'form' => $form,
         ]);
@@ -60,7 +60,7 @@ use Symfony\Component\Routing\Attribute\Route;
             return $this->redirectToRoute('app_depot_index');
         }
 
-        return $this->render('depot/edit.html.twig', [
+        return $this->render('depot/modifier.html.twig', [
             'depot' => $depot,
             'form' => $form,
         ]);

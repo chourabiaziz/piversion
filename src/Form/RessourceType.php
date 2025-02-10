@@ -35,7 +35,7 @@ class RessourceType extends AbstractType
             'attr' => ['class' => 'form-control', 'placeholder' => 'Entrez la quantité'],
             'label' => 'Quantité',
             'label_attr' => ['class' => 'form-label'],
-            "mapped"=>true ,            'empty_data' => ''
+            "mapped"=>true ,            'empty_data' => 0
 
         ])
         ->add('unite_mesure', ChoiceType::class, [
@@ -93,7 +93,7 @@ class RessourceType extends AbstractType
             'attr' => ['class' => 'form-select'],
             'label' => 'Dépôt',
             'label_attr' => ['class' => 'form-label'],
-            "mapped"=>false , 'empty_data' => ''
+            "mapped"=>true , 'empty_data' => ''
         ]);
         ;
     }

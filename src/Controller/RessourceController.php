@@ -35,7 +35,7 @@ use Symfony\Component\Routing\Attribute\Route;
             return $this->redirectToRoute('app_ressource_index');
         }
 
-        return $this->render('ressource/new.html.twig', [
+        return $this->render('ressource/ajout.html.twig', [
             'ressource' => $ressource,
             'form' => $form,
         ]);
@@ -61,7 +61,7 @@ use Symfony\Component\Routing\Attribute\Route;
             return $this->redirectToRoute('app_ressource_index');
         }
 
-        return $this->render('ressource/edit.html.twig', [
+        return $this->render('ressource/modifier.html.twig', [
             'ressource' => $ressource,
             'form' => $form,
         ]);
